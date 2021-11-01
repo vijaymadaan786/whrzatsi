@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 String Phone = "";
 
-class WeLogins extends StatefulWidget {g
+class WeLogins extends StatefulWidget {
   @override
   _WeLoginState createState() => _WeLoginState();
 }
