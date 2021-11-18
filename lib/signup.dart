@@ -9,7 +9,6 @@ import 'package:whrzats/verification_otp.dart';
 import 'package:http/http.dart' as http;
 
 String Phone = "";
-
 class Signups extends StatefulWidget {
   @override
   _SignupsState createState() => _SignupsState();

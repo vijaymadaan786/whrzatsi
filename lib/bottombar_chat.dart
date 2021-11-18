@@ -9,7 +9,7 @@ class Chat extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            "Chats",
+            "Chat",
             style: TextStyle(
               fontSize: 22,
             ),
@@ -20,8 +20,8 @@ class Chat extends StatelessWidget {
               child: TextField(
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.search,
+                  prefixIcon: ImageIcon(
+                    AssetImage("assets/images/icsearch.png"),
                     color: Colors.black,
                   ),
                   labelText: "Search by name...",
@@ -60,36 +60,35 @@ class Chat extends StatelessWidget {
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 // To create a listview
-                itemCount: 10,
+                itemCount: 60,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
+                    margin: EdgeInsets.zero,
                     child: Container(
                         child: Row(
                       children: <Widget>[
-                        Image.asset(
-                          "assets/images/index.jpg",
-                          width: 100,
-                          height: 100,
+                        Container(
+                          margin: EdgeInsets.only(top: 17, left: 10),
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/index3.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
                         ),
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              "Vijay",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 19),
+                            Container(
+                              child: Text("Vijay", style: TextStyle(fontWeight: FontWeight.bold),),
                             ),
-                            Text("Hi How are you"),
-                            // Badge(
-                            //     position:
-                            //         BadgePosition.topEnd(top: 10, end: 10),
-                            //     badgeContent: Text(
-                            //       '9',
-                            //       style: TextStyle(
-                            //           color: Colors.white, fontSize: 10),
-                            //     ),
-                            //     child: IconButton(
-                            //         icon: Icon(Icons.shopping_cart),
-                            //         onPressed: () {}))
+                            Container(
+                              margin: EdgeInsets.only(top: 5, left: 12),
+                              child: Text("Hi How are you"),
+                            )
                           ],
                         )
                       ],

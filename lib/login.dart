@@ -1,11 +1,11 @@
-import 'dart:convert';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:whrzats/home.dart';
 import 'package:whrzats/signup.dart';
+import 'package:collection/collection.dart';
 import 'package:whrzats/verification_otp.dart';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 
 String Phone = "";
 
@@ -15,7 +15,8 @@ class WeLogins extends StatefulWidget {
 }
 
 class _WeLoginState extends State<WeLogins> {
-   Future<Post> post;
+  Future<Post> post;
+
   @override
   void initState() {
     super.initState();
@@ -36,26 +37,28 @@ class _WeLoginState extends State<WeLogins> {
           return CircularProgressIndicator();
         },
       ),
-
     );
   }
 }
 
 Future<Post> fetchPost() async {
-  String url="https://whrzat.com:8001/api/customer/customerLogIn";
-  final response = await http.post(Uri.parse(url),
-  body: jsonEncode(<String, String>{
-  // {"contact": "6239687412", "code": "+91", "deviceType": "ANDROID", "timeZone": "19800"}
+  String url = "https://whrzat.com:8001/api/customer/customerLogIn";
+  final response = await http.post(Uri.parse(url), body: {
+    "contact": "7018125843",
+    "code": "+91",
+    "deviceType": "ANDROID",
+    "timeZone": "19800"
+  });
 
-    "contact" : Phone, "code" : "+91", "deviceType" : "ANDROID", "timeZone" : "19000"
-
-  }));
-  print("hello");
+  print("hello---------");
+  print(response);
   print(response.statusCode);
-
   if (response.statusCode == 200) {
+    print(response.statusCode);
     // If the call to the server was successful (returns OK), parse the JSON.
     print(json.decode(response.body));
+
+    print("--------------------------------------------");
     return Post.fromJson(json.decode(response.body));
   } else {
     // If that call was not successful (response was unexpected), it throw an error.
@@ -65,7 +68,9 @@ Future<Post> fetchPost() async {
 
 class Post {
   final int phonenum;
-  Post({  this.phonenum});
+
+  Post({this.phonenum});
+
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       phonenum: json['phonenumber'],
@@ -75,7 +80,8 @@ class Post {
 
 class WeLogin extends StatelessWidget {
   @override
-  final  myController = TextEditingController();
+  final myController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -88,11 +94,10 @@ class WeLogin extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.arrow_back_ios_sharp),
               onPressed: () {
-                  Navigator.pop(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                  );
-
+                Navigator.pop(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               },
             ),
           ),
@@ -129,13 +134,12 @@ class WeLogin extends StatelessWidget {
                 disabledBorder: InputBorder.none,
                 hintText: "Phone number",
                 hintStyle:
-                    TextStyle(color: Colors.grey, fontFamily: 'OpenSans'),
+                TextStyle(color: Colors.grey, fontFamily: 'OpenSans'),
                 contentPadding: const EdgeInsets.all(10.0),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(9))),
               ),
             ),
-
           ),
           Container(
             width: double.infinity,
@@ -183,7 +187,8 @@ class WeLogin extends StatelessWidget {
                         fontFamily: 'OpenSans',
                         fontWeight: FontWeight.bold),
                     recognizer: new TapGestureRecognizer()
-                      ..onTap = () => Navigator.push(
+                      ..onTap = () =>
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => Signup(),

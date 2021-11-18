@@ -18,27 +18,29 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
-
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   http: ^0.13.2
+  badges: ^2.0.1
+
+#  firebase_core: ^1.10.0
+#  firebase_analytics: ^8.3.4
+#  firebase_auth: ^3.2.0
+#  cloud_firestore: ^3.1.0
   #  geolocator: ^6.0.0
 
   webview_flutter:
 
   flutter:
-
     sdk: flutter
+  geocoding: ^2.0.1
+  geolocator: ^7.7.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -61,11 +63,21 @@ flutter:
     - assets/images/index4.jpg
     - assets/images/index5.jpg
     - assets/images/index6.jpg
-      # An image asset can refer to one or more resolution-specific "variants", see
-      # https://flutter.dev/assets-and-images/#resolution-aware.
+    - assets/images/ic_add_hotspot.png
+    - assets/images/ic_add_active.png
+    - assets/images/ic_home_active.png
+    - assets/images/ic_chat_active.png
+    - assets/images/ic_profile_active.png
+    - assets/images/ic_edit.png
+    - assets/images/ic_settings.png
+    - assets/images/ic_like_profile.png
+    - assets/images/ic_new_activity.png
 
-      # For details regarding adding assets from package dependencies, see
-      # https://flutter.dev/assets-and-images/#from-packages
+
+
+
+
+
   fonts:
    - family: OpenSans
      fonts:
